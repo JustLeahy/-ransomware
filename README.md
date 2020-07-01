@@ -1,3 +1,6 @@
 # SQLGitHub
 
-SQLGitHub — Managin
+SQLGitHub — Managing GitHub organization made easier
+
+
+## In
