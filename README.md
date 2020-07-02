@@ -3,4 +3,6 @@
 SQLGitHub — Managing GitHub organization made easier
 
 
-## In
+## Introduction
+
+SQLGitHub features a SQL-like 
