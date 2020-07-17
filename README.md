@@ -13,4 +13,8 @@ You may also think of it as a better, enhanced frontend layer built on top of Gi
 - [Presentation](assets/slides.pdf)
 - [Poster](assets/poster.pdf)
 
-![Screens
+![ScreenshotIntro](https://i.imgur.com/Ii355Ds.png)
+
+
+## Installation
+
