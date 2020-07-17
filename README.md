@@ -18,3 +18,6 @@ You may also think of it as a better, enhanced frontend layer built on top of Gi
 
 ## Installation
 
+1. Install prerequisites  
+```bash
+p
