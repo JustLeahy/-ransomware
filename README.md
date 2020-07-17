@@ -10,4 +10,7 @@ SQLGitHub features a SQL-like syntax that allows you to:
 
 You may also think of it as a better, enhanced frontend layer built on top of GitHub's RESTful API.
 
-- [Presentation](assets/sl
+- [Presentation](assets/slides.pdf)
+- [Poster](assets/poster.pdf)
+
+![Screens
