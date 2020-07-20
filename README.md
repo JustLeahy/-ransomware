@@ -20,4 +20,9 @@ You may also think of it as a better, enhanced frontend layer built on top of Gi
 
 1. Install prerequisites  
 ```bash
-pip install requests prompt_toolkit pygments reg
+pip install requests prompt_toolkit pygments regex
+```
+
+2. Install my patched PyGithub  
+```bash
+g
