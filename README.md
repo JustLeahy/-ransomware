@@ -28,4 +28,7 @@ pip install requests prompt_toolkit pygments regex
 git clone https://github.com/lnishan/PyGithub.git
 cd PyGithub
 ./setup.py build
-sudo ./se
+sudo ./setup.py install
+```
+
+3. Configure SQLGitHub (o
