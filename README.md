@@ -25,4 +25,7 @@ pip install requests prompt_toolkit pygments regex
 
 2. Install my patched PyGithub  
 ```bash
-git clone https://github.com/lnishan/PyGi
+git clone https://github.com/lnishan/PyGithub.git
+cd PyGithub
+./setup.py build
+sudo ./se
