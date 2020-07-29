@@ -31,4 +31,5 @@ cd PyGithub
 sudo ./setup.py install
 ```
 
-3. Configure SQLGitHub (o
+3. Configure SQLGitHub (optional)  
+In root directory (same dire
