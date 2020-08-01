@@ -33,4 +33,6 @@ sudo ./setup.py install
 
 3. Configure SQLGitHub (optional)  
 In root directory (same directory as `SQLGitHub.py`),  
-Create and
+Create and edit `config.py`:  
+```python
+token = "your tok
