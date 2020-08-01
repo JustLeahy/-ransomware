@@ -35,4 +35,5 @@ sudo ./setup.py install
 In root directory (same directory as `SQLGitHub.py`),  
 Create and edit `config.py`:  
 ```python
-token = "your token here"  # can be obtained from https:
+token = "your token here"  # can be obtained from https://github.com/settings/tokens
+output = "str"  # or "csv",
