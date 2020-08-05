@@ -41,4 +41,9 @@ output = "str"  # or "csv", "html"
 
 4. Start SQLGitHub  
 ```bash
-./
+./SQLGitHub.py
+```
+
+## Sample Usage
+
+### → Ge
