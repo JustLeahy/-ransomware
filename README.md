@@ -46,4 +46,4 @@ output = "str"  # or "csv", "html"
 
 ## Sample Usage
 
-### → Ge
+### → Get name and description from all the repos in [abseil
