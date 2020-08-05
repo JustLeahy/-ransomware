@@ -46,4 +46,7 @@ output = "str"  # or "csv", "html"
 
 ## Sample Usage
 
-### → Get name and description from all the repos in [abseil
+### → Get name and description from all the repos in [abseil](https://github.com/abseil).
+
+```sql
+selec
