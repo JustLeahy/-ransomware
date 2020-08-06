@@ -52,4 +52,6 @@ output = "str"  # or "csv", "html"
 select name, description from abseil.repos
 ```
 
-![Screenshot1
+![Screenshot1](https://i.imgur.com/OG5c2GS.png)
+
+---
