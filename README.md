@@ -49,4 +49,7 @@ output = "str"  # or "csv", "html"
 ### → Get name and description from all the repos in [abseil](https://github.com/abseil).
 
 ```sql
-selec
+select name, description from abseil.repos
+```
+
+![Screenshot1
