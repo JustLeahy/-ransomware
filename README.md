@@ -56,4 +56,4 @@ select name, description from abseil.repos
 
 ---
 
-### → Get last-updated time and title of the issues closed in the past 3 days in [s
+### → Get last-updated time and title of the issues closed in the past 3 days in [servo](https://github.com/servo) listed in desc
