@@ -59,3 +59,4 @@ select name, description from abseil.repos
 ### → Get last-updated time and title of the issues closed in the past 3 days in [servo](https://github.com/servo) listed in descending order of last-updated time.
 
 ```sql
+select updated_at, title from servo.issues.clos
