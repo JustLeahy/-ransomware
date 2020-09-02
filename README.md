@@ -66,4 +66,4 @@ select updated_at, title from servo.issues.closed.3 order by updated_at desc
 
 ---
 
-### → 
+### → Get top 10 most-starred repositories in [
