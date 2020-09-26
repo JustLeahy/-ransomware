@@ -76,4 +76,4 @@ select concat(concat("(", stargazers_count, ") ", name), ": ", description) from
 
 ---
 
-### → Get top 10 contributors in [servo](https://github.com/s
+### → Get top 10 contributors in [servo](https://github.com/servo) for the past 7 days based on number of commits.
