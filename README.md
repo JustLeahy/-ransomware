@@ -72,4 +72,4 @@ select updated_at, title from servo.issues.closed.3 order by updated_at desc
 select concat(concat("(", stargazers_count, ") ", name), ": ", description) from servo.repos order by stargazers_count desc, name limit 10
 ```
 
-!
+![Screenshot3](https://i.imgur.com/sl2Ztr
