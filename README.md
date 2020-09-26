@@ -76,4 +76,4 @@ select concat(concat("(", stargazers_count, ") ", name), ": ", description) from
 
 ---
 
-### → Get top 10 con
+### → Get top 10 contributors in [servo](https://github.com/s
