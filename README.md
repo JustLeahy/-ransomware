@@ -79,4 +79,4 @@ select concat(concat("(", stargazers_count, ") ", name), ": ", description) from
 ### → Get top 10 contributors in [servo](https://github.com/servo) for the past 7 days based on number of commits.
 
 ```sql
-select login, count(login)
+select login, count(login) from servo.commits.7 group by login order by
