@@ -82,4 +82,4 @@ select concat(concat("(", stargazers_count, ") ", name), ": ", description) from
 select login, count(login) from servo.commits.7 group by login order by count(login) desc, login limit 10
 ```
 
-![
+![Screenshot4](https://i.imgur.com/2ISHbPJ.png)
