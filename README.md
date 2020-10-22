@@ -87,4 +87,8 @@ select login, count(login) from servo.commits.7 group by login order by count(lo
 
 ## SQL Language Support
 
-### Support
+### Supported Schema
+
+```
+SELECT
+    select_expr [, sele
