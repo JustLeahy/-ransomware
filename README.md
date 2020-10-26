@@ -91,4 +91,5 @@ select login, count(login) from servo.commits.7 group by login order by count(lo
 
 ```
 SELECT
-    select_expr [, sele
+    select_expr [, select_expr ...]
+    FROM {org_name | org_name.{re
