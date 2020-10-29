@@ -96,4 +96,5 @@ SELECT
     [WHERE where_condition]
     [GROUP BY {col_name | expr}
       [ASC | DESC], ...]
-    [HAVIN
+    [HAVING where_condition]
+    [ORDER BY {col_name | e
