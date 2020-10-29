@@ -94,4 +94,6 @@ SELECT
     select_expr [, select_expr ...]
     FROM {org_name | org_name.{repos | issues | pulls | commits}}
     [WHERE where_condition]
-    [GROUP BY {
+    [GROUP BY {col_name | expr}
+      [ASC | DESC], ...]
+    [HAVIN
