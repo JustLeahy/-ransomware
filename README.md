@@ -104,4 +104,4 @@ SELECT
 
 ### Supported Fields
 
-M
+Most of the fields listed in [GitHub API v3](
