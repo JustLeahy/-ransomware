@@ -97,4 +97,6 @@ SELECT
     [GROUP BY {col_name | expr}
       [ASC | DESC], ...]
     [HAVING where_condition]
-    [ORDER BY {col_name | e
+    [ORDER BY {col_name | expr}
+      [ASC | DESC], ...]
+    [LIMIT
