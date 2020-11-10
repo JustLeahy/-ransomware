@@ -99,4 +99,9 @@ SELECT
     [HAVING where_condition]
     [ORDER BY {col_name | expr}
       [ASC | DESC], ...]
-    [LIMIT
+    [LIMIT row_count]
+```
+
+### Supported Fields
+
+M
