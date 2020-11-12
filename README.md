@@ -104,4 +104,5 @@ SELECT
 
 ### Supported Fields
 
-Most of the fields listed in [GitHub API v3](https://developer.github.com/v3/) are available for query
+Most of the fields listed in [GitHub API v3](https://developer.github.com/v3/) are available for query.  
+For example, for `org_name.repos` querie
