@@ -105,4 +105,4 @@ SELECT
 ### Supported Fields
 
 Most of the fields listed in [GitHub API v3](https://developer.github.com/v3/) are available for query.  
-For example, for `org_name.repos` queries, you can specify `id`, 
+For example, for `org_name.repos` queries, you can specify `id`, `name`, `full_name`, `description` ... et
