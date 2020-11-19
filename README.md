@@ -111,4 +111,4 @@ You may also use `select *` for the full list of fields.
 ### Supported Functions
 
 **String Functions:**  
-"concat", "concat_ws", "find_in_se
+"concat", "concat_ws", "find_in_set", "insert", "instr", "length", "locate"
