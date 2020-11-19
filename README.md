@@ -106,4 +106,6 @@ SELECT
 
 Most of the fields listed in [GitHub API v3](https://developer.github.com/v3/) are available for query.  
 For example, for `org_name.repos` queries, you can specify `id`, `name`, `full_name`, `description` ... etc. in expr's.  
-You may also use `select *` f
+You may also use `select *` for the full list of fields.
+
+### Supported Functi
