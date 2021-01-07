@@ -114,4 +114,4 @@ You may also use `select *` for the full list of fields.
 "concat", "concat_ws", "find_in_set", "insert", "instr", "length", "locate", "lcase", "lower", "left", "mid", "repeat", "right", "replace", "strcmp", "substr", "substring", "ucase", “upper"
 
 **Numeric Functions:**  
-"avg", "count", "max", "min", “sum", "ab
+"avg", "count", "max", "min", “sum", "abs", "ceil", "ceiling", "exp", "floor", "great
