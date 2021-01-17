@@ -117,4 +117,4 @@ You may also use `select *` for the full list of fields.
 "avg", "count", "max", "min", “sum", "abs", "ceil", "ceiling", "exp", "floor", "greatest", "least", "ln", "log", "pow", "power", "sign", "sqrt"
 
 **Date & Advanced Functions:**  
-"curdate", "
+"curdate", "current_date", "current_time", "current_timest
