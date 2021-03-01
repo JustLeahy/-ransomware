@@ -5,4 +5,5 @@ from components import top_level
 
 
 if __name__ == "__main__":
-    token, output 
+    token, output = config_loader.Load("config")
+    sqlserv = 
