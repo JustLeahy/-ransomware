@@ -59,3 +59,48 @@ import datetime
 
 class SgExpression:
     """A set of utility functions to evaluate expressions."""
+
+    # (?:something) means a non-capturing group
+    # Matches anything word that isn't postfixed with a '(' (not a function name)
+    # Adding a non-alpha character as matching postfix to prevent cases like 'www(' having a match 'ww'
+    _TOKEN_BODY = r"([a-zA-Z_]+)"
+    _TOKEN_POST = r"(?:[^\(a-zA-Z_]|$)"
+    _TOKEN_REGEX = _TOKEN_BODY + _TOKEN_POST
+    _DBL_STR_REGEX = r"\"(?:[^\\\"]|\\.)*\""
+    _SGL_STR_REGEX = r"\'(?:[^\\\']|\\.)*\'"
+
+    @classmethod
+    def ExtractTokensFromExpressions(cls, exprs):
+        ret_set = set()
+        for expr in exprs:
+            if expr == u"*":
+                return [u"*"]
+            expr_rem = re.sub(cls._DBL_STR_REGEX, r"", expr)
+            expr_rem = re.sub(cls._SGL_STR_REGEX, r"", expr_rem)  # string literals removed
+            for token in re.findall(cls._TOKEN_REGEX, expr_rem):
+                if not token in df.ALL_TOKENS:
+                    ret_set.add(token)
+        return list(ret_set)
+
+    @classmethod
+    def IsAllTokensInAggregate(cls, exprs):
+        aggr_regex = r"((?:" + r"|".join(df.AGGREGATE_FUNCTIONS) + r")\((?:(?>[^\(\)]+|(?R))*)\))"
+        for expr in exprs:
+            expr_rem = re.sub(cls._DBL_STR_REGEX, r"", expr)
+            expr_rem = re.sub(cls._SGL_STR_REGEX, r"", expr_rem)  # string literals removed
+            while True:
+                prev_len = len(expr_rem)
+                expr_rem = regex.sub(aggr_regex, r"", expr_rem)  # one aggregate function removed
+                if len(expr_rem) == prev_len:
+                    break
+            if re.search(cls._TOKEN_REGEX, expr_rem):
+                return False
+        return True
+
+    @classmethod
+    def _IsFieldTokenCharacter(cls, ch):
+        return ch.isalpha() or ch == u"_"
+
+    @classmethod
+    def _IsOperatorCharacter(cls, ch):
+        return not ch.isspace()
