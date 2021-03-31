@@ -104,3 +104,49 @@ class SgExpression:
     @classmethod
     def _IsOperatorCharacter(cls, ch):
         return not ch.isspace()
+
+    @classmethod
+    def _IsNumericCharacter(cls, ch):
+        return ch.isdigit() or ch == u"."
+
+    @classmethod
+    def _GetPrecedence(cls, opr):
+        return df.PRECEDENCE[opr] if opr else -100
+
+    @classmethod
+    def _EvaluateOperatorBack(cls, opds, oprs):
+        opr = oprs[-1]
+        oprs.pop()
+        rows = len(opds)
+        if opr == u",":  # special case: have to process every u","
+            for i in range(rows):
+                opds[i] = opds[i][:-2] + [opds[i][-2] + [opds[i][-1]]]
+        elif opr == u"*":
+            for i in range(rows):
+                res = opds[i][-2] * opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"/":
+            for i in range(rows):
+                res = opds[i][-2] / opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"%":
+            for i in range(rows):
+                res = opds[i][-2] % opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"+":
+            for i in range(rows):
+                res = opds[i][-2] + opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"-":
+            for i in range(rows):
+                res = opds[i][-2] - opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"==":  # shouldn't work with None but it does atm
+            for i in range(rows):
+                res = opds[i][-2] == opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u">=":
+            for i in range(rows):
+                res = opds[i][-2] >= opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u">":
