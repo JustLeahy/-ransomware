@@ -150,3 +150,44 @@ class SgExpression:
                 res = opds[i][-2] >= opds[i][-1]
                 opds[i] = opds[i][:-2] + [res]
         elif opr == u">":
+            for i in range(rows):
+                res = opds[i][-2] > opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"<=":
+            for i in range(rows):
+                res = opds[i][-2] <= opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"<":
+            for i in range(rows):
+                res = opds[i][-2] < opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"<>":
+            for i in range(rows):
+                res = opds[i][-2] != opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"!=":
+            for i in range(rows):
+                res = opds[i][-2] != opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"is":
+            for i in range(rows):
+                res = opds[i][-2] == opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"like":
+            for i in range(rows):
+                is_escaping = False
+                regex = r""
+                for ch in opds[i][-1]:
+                    if is_escaping:  # \% \_
+                        regex += ch
+                        is_escaping = False
+                    elif ch == "\\":
+                        is_escaping = True
+                    elif ch == "%":
+                        regex += ".*"
+                    elif ch == "_":
+                        regex += "."
+                    else:
+                        regex += re.escape(ch)
+                regex += r"$"
+                res = True if opds[i][-2] and re.match(regex, opds[i][-2]) else False
