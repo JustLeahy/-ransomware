@@ -191,3 +191,60 @@ class SgExpression:
                         regex += re.escape(ch)
                 regex += r"$"
                 res = True if opds[i][-2] and re.match(regex, opds[i][-2]) else False
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"regexp":
+            for i in range(rows):
+                regex = re.compile(opds[i][-1] + "$")
+                res = True if opds[i][-2] and re.match(regex, opds[i][-2]) else False
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"in":
+            for i in range(rows):
+                res = opds[i][-2] in opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == u"not":
+            for i in range(rows):
+                opds[i][-1] = not opds[i][-1]
+        elif opr in (u"and", u"&&"):
+            for i in range(rows):
+                res = opds[i][-2] and opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+        elif opr == "xor":
+            for i in range(rows):
+                res = opds[i][-2] != opds[i][-1]  # assumes both are boolean's
+                opds[i] = opds[i][:-2] + [res]
+        elif opr in (u"or", u"||"):
+            for i in range(rows):
+                res = opds[i][-2] or opds[i][-1]
+                opds[i] = opds[i][:-2] + [res]
+
+    @classmethod
+    def _EvaluateFunction(cls, opds, func):
+        # TODO(lnishan): Add new function names to definitions.py
+        rows = len(opds)
+        if func == "zero":  # dummy function
+            return [0] * rows
+        if func == "avg":
+            avg = sum(row[-1] for row in opds) / float(rows)
+            res = []
+            for i in range(rows):
+                res.append(avg)
+            return res
+        elif func == "count":
+            res = []
+            for i in range(rows):
+                res.append(rows)
+            return res
+        elif func == "max":
+            mx = max(row[-1] for row in opds)
+            res = []
+            for i in range(rows):
+                res.append(mx)
+            return res
+        elif func == "min":
+            mn = min(row[-1] for row in opds)
+            res = []
+            for i in range(rows):
+                res.append(mn)
+            return res
+        elif func == "sum":
+            sm = sum(row[-1] for row in opds)
