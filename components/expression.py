@@ -333,3 +333,42 @@ class SgExpression:
             return res
         elif func in (u"mid", u"substr", u"substring"):
             res = []
+            for row in opds:
+                x = len(row[-1])
+                if x == 3:
+                    n_len = row[-1].pop()
+                n_st = row[-1].pop() - 1
+                subs = row[-1].pop()
+                if x == 3:
+                    n_end = n_st + n_len
+                    res.append(subs[n_st:n_end]) 
+                else:
+                    res.append(subs[n_st:])
+            return res 
+        elif func == "repeat":
+            res = []
+            for row in opds:
+                cstr = u""
+                for i in range(row[-1][-1]):
+                    cstr += row[-1][-2]
+                res.append(cstr)
+            return res
+        elif func == "replace":
+            res = []
+            for row in opds:
+                res.append(row[-1][-3].replace(row[-1][-2],row[-1][-1]))
+            return res  
+        elif func == "right":
+            res = []
+            for row in opds:
+                n_char = row[-1][-1]
+                subs = row[-1][-2]
+                res.append(subs[-n_char:])
+            return res
+        elif func == "strcmp":
+            res = []
+            for row in opds:
+                res.append((row[-1][-1] == row[-1][-2]))
+            return res
+        elif func in (u"ucase", u"upper"):
+            res = []
