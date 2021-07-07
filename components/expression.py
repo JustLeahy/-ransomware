@@ -248,3 +248,45 @@ class SgExpression:
             return res
         elif func == "sum":
             sm = sum(row[-1] for row in opds)
+            res = []
+            for i in range(rows):
+                res.append(sm)
+            return res
+        elif func == "ascii":
+            res = []
+            for row in opds:
+                res.append(u" ".join(str(ord(i)) for i in row[-1]))
+            return res
+        elif func == "concat":
+            res = []
+            for row in opds:
+                cstr = u""
+                for val in row[-1]:
+                    cstr += util.GuaranteeUnicode(val)
+                res.append(cstr)
+            return res
+        elif func == "concat_ws":
+            res = []
+            for row in opds:
+                cstr = u""
+                sep = row[-1][0]
+                for val in row[-1][:-1]:
+                    if val != sep:
+                        cstr += util.GuaranteeUnicode(val)
+                        cstr += sep
+                cstr += util.GuaranteeUnicode(row[-1][-1])
+                res.append(cstr)
+            return res
+        elif func == "find_in_set":
+            res =[]
+            for row in opds:
+                cstr = row[-1][-1]
+                subs = row[-1][-2]
+                if subs in cstr:
+                    res.append(cstr.index(subs)+1)
+                else:
+                    res.append(0)
+            return res
+        elif func == "insert":
+            res = []
+            for row in opds:
