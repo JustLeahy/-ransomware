@@ -290,3 +290,46 @@ class SgExpression:
         elif func == "insert":
             res = []
             for row in opds:
+                x = row[-1][-3] - 1
+                y = row[-1][-2]
+                str = row[-1][-4]
+                subs = row[-1][-1]
+                res.append(str[:x] + subs + str[x+y-1:])
+            return res
+        elif func == "instr":
+            res = []
+            for row in opds:
+                res.append(row[-1][-2].find(row[-1][-1])+1)
+            return res
+        elif func in (u"lcase", u"lower"):
+            res = []
+            for row in opds:
+	        res.append(row[-1].lower())
+            return res
+        elif func == "left":
+            res = []
+            for row in opds:
+                n_char = row[-1][-1]
+                subs = row[-1][-2]
+                res.append(subs[:n_char])
+            return res
+        elif func == "length":
+            res = []
+            for row in opds:
+                res.append(len(row[-1]))
+            return res
+        elif func == "locate":
+            res = []
+            for row in opds:
+                x = len(row[-1])
+                if x == 3:
+                    st_pos = row[-1].pop()
+                cstr = row[-1].pop()
+                subs = row[-1].pop()
+                if x == 3:
+                    res.append(cstr.find(subs, st_pos)+1)
+                else:
+                    res.append(cstr.find(subs)+1)
+            return res
+        elif func in (u"mid", u"substr", u"substring"):
+            res = []
