@@ -459,3 +459,45 @@ class SgExpression:
         elif opr == u")":
             while oprs and oprs[-1] != u"(":
                 cls._EvaluateOperatorBack(opds, oprs)
+            oprs.pop()
+            func = oprs.pop().lower()
+            if func:
+                res = cls._EvaluateFunction(opds, func)
+                for i in range(rows):
+                    opds[i][-1] = res[i]
+        elif opr == u",":
+            while oprs and cls._GetPrecedence(oprs[-1]) >= prec and oprs[-1] != ",":
+                cls._EvaluateOperatorBack(opds, oprs)
+            if (not oprs) or (oprs and oprs[-1] != ","):
+                for i in range(rows):
+                    opds[i][-1] = [opds[i][-1]]
+            else:
+                oprs.pop()
+                for i in range(rows):
+                    opds[i] = opds[i][:-2] + [opds[i][-2] + [opds[i][-1]]]
+            oprs.append(opr)
+        else:
+            while oprs and cls._GetPrecedence(oprs[-1]) >= prec :
+                cls._EvaluateOperatorBack(opds, oprs)
+            if opr:
+                oprs.append(opr)
+
+    @classmethod
+    def _ProcessOperator(cls, is_start, opds, oprs, token):
+        rows = len(opds)
+        token = token.lower()
+        if token == u"-":
+            token = u"--" if is_start else u"-"
+        elif token == u"=":
+            token = u"=="
+        cls._EvaluateOperator(opds, oprs, token)
+
+    @classmethod
+    def EvaluateExpression(cls, table, expr):
+        rows = len(table)
+        opds = []
+        oprs = []
+        for _ in range(rows):
+            opds.append([])
+        reading = None  # None = nothing, 0 = operator, 1 = field tokens (can be operator too), 2 = number, 3 = string
+        is_start = True
