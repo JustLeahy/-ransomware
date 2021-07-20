@@ -501,3 +501,56 @@ class SgExpression:
             opds.append([])
         reading = None  # None = nothing, 0 = operator, 1 = field tokens (can be operator too), 2 = number, 3 = string
         is_start = True
+        is_escaping = False
+        string_ch = None
+        token = u""
+        expr += u" "  # add a terminating character (to end token parsing)
+        for idx, ch in enumerate(expr):
+            if reading == 3:  # string
+                if is_escaping:
+                    # unescape characters
+                    token += util.Unescape(ch)
+                    is_escaping = False
+                elif ch == "\\":
+                    is_escaping = True
+                elif ch == string_ch:
+                    for i in range(rows):
+                        opds[i].append(token)
+                    token = u""
+                    string_ch = None
+                    reading = None
+                else:
+                    token += ch
+            elif reading == 2:  # number
+                if cls._IsNumericCharacter(ch):
+                    token += ch
+                else:
+                    num = float(token) if u"." in token else int(token)
+                    for i in range(rows):
+                        opds[i].append(num)
+                    token = u""
+                    if cls._IsOperatorCharacter(ch):
+                        reading = 0
+                        token = ch
+                        if ch in (u"(", u","):
+                            is_start = True
+                    else:
+                        reading = None
+            elif reading == 1:
+                if cls._IsFieldTokenCharacter(ch):
+                    token += ch
+                else:
+                    if token.lower() in df.OPERATOR_TOKENS:
+                        cls._ProcessOperator(is_start, opds, oprs, token)
+                        token = u""
+                        if ch.isspace():
+                            reading = None
+                        else:
+                            token = ch
+                            if ch in (u"\"", "\'"):
+                                reading = 3
+                                token = u""
+                                string_ch = ch
+                            elif cls._IsNumericCharacter(ch):
+                                reading = 2
+                            elif cls._IsFieldTokenCharacter(ch):
