@@ -554,3 +554,55 @@ class SgExpression:
                             elif cls._IsNumericCharacter(ch):
                                 reading = 2
                             elif cls._IsFieldTokenCharacter(ch):
+                                reading = 1
+                            elif cls._IsOperatorCharacter(ch):
+                                reading = 0
+                                if ch in (u"(", u","):
+                                    is_start = True
+                    elif ch == u"(":  # function
+                        oprs.append(token)
+                        oprs.append(ch)
+                        idx2 = idx + 1
+                        while idx2 < len(expr) and expr[idx2] == u" ":
+                            idx2 = idx2 + 1
+                        if idx2 < len(expr) and expr[idx2] == u")":
+                            for i in range(rows):
+                                opds[i].append(None)
+                        is_start = True
+                        token = u""
+                        reading = None
+                    else:
+                        vals = table.GetVals(token)
+                        for i in range(rows):
+                            opds[i].append(vals[i])
+                        token = u""
+                        if cls._IsOperatorCharacter(ch):
+                            reading = 0
+                            token = ch
+                            if ch in (u"(", u","):
+                                is_start = True
+                        else:
+                            reading = None
+            elif reading == 0:
+                if token == u"":
+                    is_opr = True
+                elif token in (u"(", u")", u",", u"+", u"-", u"*", u"/", u"%"):
+                    is_opr = False  # just to terminate the current segment
+                elif token and ch == u"(":  # r".+\(" cannot be an operator
+                    is_opr = False
+                elif token.isalpha():
+                    is_opr = ch.isalpha()
+                else:
+                    is_opr = (not ch.isalnum()) and (not ch.isspace())
+
+                if is_opr:
+                    token += ch
+                else:
+                    cls._ProcessOperator(is_start, opds, oprs, token)
+                    token = u""
+                    if ch.isspace():
+                        reading = None
+                    else:
+                        token = ch
+                        if ch in (u"\"", "\'"):
+                            reading = 3
