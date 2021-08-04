@@ -606,3 +606,45 @@ class SgExpression:
                         token = ch
                         if ch in (u"\"", "\'"):
                             reading = 3
+                            token = u""
+                            string_ch = ch
+                        elif cls._IsNumericCharacter(ch) or (ch == u"-" and is_start):
+                            reading = 2
+                        elif cls._IsFieldTokenCharacter(ch):
+                            reading = 1
+                        elif cls._IsOperatorCharacter(ch):
+                            reading = 0
+                        is_start = ch in (u"(", u",")
+
+            else:  # None
+                if ch.isspace():
+                    reading = None
+                else:
+                    token += ch
+                    if ch in (u"\"", u"\'"):
+                        reading = 3
+                        token = u""
+                        string_ch = ch
+                    elif cls._IsNumericCharacter(ch) or (ch == u"-" and is_start):
+                        reading = 2
+                    elif cls._IsFieldTokenCharacter(ch):
+                        reading = 1
+                    elif cls._IsOperatorCharacter(ch):
+                        reading = 0
+                    is_start = ch in (u"(", u",")
+        cls._EvaluateOperator(opds, oprs)  # opr = None
+        return [row[0] for row in opds]
+
+    @classmethod
+    def EvaluateExpressions(cls, table, exprs):
+        ret = tb.SgTable()
+        ret.SetFields(exprs)
+        rows = len(table)
+        for _ in range(rows):
+            ret.Append([])
+        for expr in exprs:
+            res = cls.EvaluateExpression(table, expr)
+            for i, val in enumerate(res):
+                # TODO(lnishan): Fix the cheat here.
+                ret._table[i].append(val)
+        return ret
