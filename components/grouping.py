@@ -1,3 +1,7 @@
 """Group and generate a list of SgTable's."""
 
-i
+import table as tb
+
+
+class SgGrouping:
+    """Grou
