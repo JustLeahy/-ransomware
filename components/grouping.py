@@ -4,4 +4,6 @@ import table as tb
 
 
 class SgGrouping:
-    """Grou
+    """Group and generate a list of SgTable's."""
+
+    @static
