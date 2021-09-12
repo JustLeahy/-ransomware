@@ -7,4 +7,5 @@ class SgGrouping:
     """Group and generate a list of SgTable's."""
 
     @staticmethod
-    def GenerateGroups(
+    def GenerateGroups(table, groups):
+        num_groups = 
