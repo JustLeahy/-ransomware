@@ -9,4 +9,6 @@ class SgGrouping:
     @staticmethod
     def GenerateGroups(table, groups):
         num_groups = len(groups)
-        groups_dict = 
+        groups_dict = {}
+        for row in table:
+            key = tuple
