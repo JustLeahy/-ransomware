@@ -11,4 +11,5 @@ class SgGrouping:
         num_groups = len(groups)
         groups_dict = {}
         for row in table:
-            key = tuple
+            key = tuple(row[-num_groups:])
+            if not 
