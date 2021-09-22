@@ -8,4 +8,5 @@ class SgGrouping:
 
     @staticmethod
     def GenerateGroups(table, groups):
-        num_groups = 
+        num_groups = len(groups)
+        groups_dict = 
