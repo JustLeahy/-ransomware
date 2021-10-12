@@ -14,4 +14,4 @@ class SgGrouping:
             key = tuple(row[-num_groups:])
             if not groups_dict.has_key(key):
                 groups_dict[key] = tb.SgTable()
-                gr
+                groups_dict[key].SetFields(table.GetFields()
