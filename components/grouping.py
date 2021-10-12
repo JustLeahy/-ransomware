@@ -13,4 +13,5 @@ class SgGrouping:
         for row in table:
             key = tuple(row[-num_groups:])
             if not groups_dict.has_key(key):
-                g
+                groups_dict[key] = tb.SgTable()
+                gr
