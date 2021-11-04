@@ -16,4 +16,4 @@ class SgGrouping:
                 groups_dict[key] = tb.SgTable()
                 groups_dict[key].SetFields(table.GetFields()[:-num_groups])
             groups_dict[key].Append(row[:-num_groups])
-        return groups_dict.val
+        return groups_dict.values()
