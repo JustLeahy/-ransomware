@@ -121,3 +121,21 @@ class SgParser:
             self._ParseLimit(sub_tokens)
         else:
             raise NotImplementedError("Command token not implemented.")
+    
+    def Parse(self, tokens):
+        self._Initialize()
+        cmd_token = None
+        sub_tokens = []
+        for token in tokens:
+            if token in definition.COMMAND_TOKENS:
+                if cmd_token:
+                    self._ParseCmdToken(cmd_token, sub_tokens)
+                cmd_token = token
+                sub_tokens = []
+            else:
+                sub_tokens.append(token)
+        if cmd_token:
+            self._ParseCmdToken(cmd_token, sub_tokens)
+        if not self._field_exprs:
+            raise SyntaxError("SQL syntax incorrect.")
+        return session.SgSession(self._github, self._field_exprs, self._source, self._condition, self._groups, self._having, self._orders, self._limit)
