@@ -73,3 +73,51 @@ class SgParser:
         self._field_exprs = self.__GetCommaSeparatedExprs(sub_tokens_str)
 
     def _ParseFrom(self, sub_tokens):
+        # TODO(lnishan): Handle sub-queries (by creating another SgParser instance) here
+        self._source = sub_tokens[0]
+
+    def _ParseWhere(self, sub_tokens):
+        self._condition = u" ".join(sub_tokens)
+
+    def _ParseGroup(self, sub_tokens):
+        sub_tokens_str = u" ".join(sub_tokens[1:])  # get rid of "by"
+        self._groups = self.__GetCommaSeparatedExprs(sub_tokens_str)
+
+    def _ParseHaving(self, sub_tokens):
+        self._having = u" ".join(sub_tokens)
+
+    def _ParseOrder(self, sub_tokens):
+        self._orders = [[], []]
+        sub_tokens_str = u" ".join(sub_tokens[1:])  # get rid of "by"
+        raw_exprs = self.__GetCommaSeparatedExprs(sub_tokens_str)
+        for raw_expr in raw_exprs:
+            if raw_expr.lower().endswith(u" asc"):
+                self._orders[0].append(raw_expr[:-4])
+                self._orders[1].append(1)
+            elif raw_expr.lower().endswith(u" desc"):
+                self._orders[0].append(raw_expr[:-5])
+                self._orders[1].append(-1)
+            else:
+                self._orders[0].append(raw_expr)
+                self._orders[1].append(1)
+
+    def _ParseLimit(self, sub_tokens):
+        self._limit = int(sub_tokens[0])
+
+    def _ParseCmdToken(self, cmd_token, sub_tokens):
+        if cmd_token == u"select":
+            self._ParseSelect(sub_tokens)
+        elif cmd_token == u"from":
+            self._ParseFrom(sub_tokens)
+        elif cmd_token == u"where":
+            self._ParseWhere(sub_tokens)
+        elif cmd_token == u"group":
+            self._ParseGroup(sub_tokens)
+        elif cmd_token == u"having":
+            self._ParseHaving(sub_tokens)
+        elif cmd_token == u"order":
+            self._ParseOrder(sub_tokens)
+        elif cmd_token == u"limit":
+            self._ParseLimit(sub_tokens)
+        else:
+            raise NotImplementedError("Command token not implemented.")
