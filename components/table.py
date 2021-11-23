@@ -2,4 +2,5 @@
 
 Sample Usage:
     table = SgTable()
-    table.Appen
+    table.Append([1, 2, 3])
+    table.Append([2, 4, 6])
