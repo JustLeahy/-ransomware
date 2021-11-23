@@ -1,3 +1,5 @@
 """A class to store tables.
 
-Sam
+Sample Usage:
+    table = SgTable()
+    table.Appen
