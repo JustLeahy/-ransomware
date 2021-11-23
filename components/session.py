@@ -112,3 +112,25 @@ class SgSession:
             res_tables = ordering.Sort()
 
         # TODO(lnishan): Support having here
+
+        # process select
+        for table in res_tables:
+            table.Copy(SgExpression.EvaluateExpressions(table, self._field_exprs))
+
+        # check if all tokens in expressions are contained in aggregate functions
+        check_exprs = [expr for expr in self._field_exprs if expr not in self._groups] if self._groups else self._field_exprs
+        if SgExpression.IsAllTokensInAggregate(check_exprs):
+            for table in res_tables:
+                table = table.SetTable([table[0]])
+
+        merged_table = tb.SgTable()
+        merged_table.SetFields(res_tables[0].GetFields())
+        for table in res_tables:
+            for row in table:
+                merged_table.Append(row)
+
+        # process limit
+        if self._limit:
+            merged_table.SetTable(merged_table[:self._limit])
+
+        return merged_table
