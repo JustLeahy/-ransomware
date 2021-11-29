@@ -9,4 +9,6 @@ Sample Usage:
         print(row)
     print(table[1])
     table[1] = [2, 2, 2]
-    print(ta
+    print(table[1])
+    table.SetFields(["a", "b", "c"])
+    p
