@@ -5,4 +5,6 @@ Sample Usage:
     table.Append([1, 2, 3])
     table.Append([2, 4, 6])
     table.Append([3, 6, 9])
-    for row 
+    for row in table:
+        print(row)
+    print(ta
