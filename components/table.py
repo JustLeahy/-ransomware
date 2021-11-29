@@ -7,4 +7,6 @@ Sample Usage:
     table.Append([3, 6, 9])
     for row in table:
         print(row)
+    print(table[1])
+    table[1] = [2, 2, 2]
     print(ta
