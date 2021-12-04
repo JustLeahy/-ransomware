@@ -13,4 +13,6 @@ Sample Usage:
     table.SetFields(["a", "b", "c"])
     print(table.GetVals("a"))
     print(table.GetVals("b"))
-    print(table.GetVals(
+    print(table.GetVals("c"))
+    print(table[1:])
+    print(tabl
