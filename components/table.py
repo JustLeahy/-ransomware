@@ -11,4 +11,5 @@ Sample Usage:
     table[1] = [2, 2, 2]
     print(table[1])
     table.SetFields(["a", "b", "c"])
-    p
+    print(table.GetVals("a"))
+    print(table.GetV
