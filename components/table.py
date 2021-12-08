@@ -30,4 +30,6 @@ class EscapeHtml:
                u"\'": u"&#39;",
                u"\n": u"<br>\n"}
 
-    @
+    @classmethod
+    def Escape(cls, ch):
+        r
