@@ -19,4 +19,8 @@ Sample Usage:
     print(table[0:2:2])
 """
 
-import itert
+import itertools
+
+
+class EscapeHtml:
+    MAPPI
