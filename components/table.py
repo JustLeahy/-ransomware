@@ -32,4 +32,4 @@ class EscapeHtml:
 
     @classmethod
     def Escape(cls, ch):
-        r
+        return cls.MAPPING[ch] if cls.MAPPING.has
