@@ -27,4 +27,7 @@ class EscapeHtml:
                u"<": u"&lt;",
                u">": u"&gt;",
                u"\"": u"&quot;",
-               u"\'":
+               u"\'": u"&#39;",
+               u"\n": u"<br>\n"}
+
+    @
