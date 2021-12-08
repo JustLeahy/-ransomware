@@ -23,4 +23,5 @@ import itertools
 
 
 class EscapeHtml:
-    MAPPI
+    MAPPING = {u"&": u"&amp;",
+               u"<": u"&lt
