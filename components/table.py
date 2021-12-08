@@ -15,4 +15,8 @@ Sample Usage:
     print(table.GetVals("b"))
     print(table.GetVals("c"))
     print(table[1:])
-    print(tabl
+    print(table[:2])
+    print(table[0:2:2])
+"""
+
+import itert
