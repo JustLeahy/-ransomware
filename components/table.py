@@ -35,4 +35,5 @@ class EscapeHtml:
         return cls.MAPPING[ch] if cls.MAPPING.has_key(ch) else ch
 
     @classmethod
-   
+    def EscapeUnicodeStr(cls, unicode_str):
+ 
