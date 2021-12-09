@@ -36,4 +36,5 @@ class EscapeHtml:
 
     @classmethod
     def EscapeUnicodeStr(cls, unicode_str):
- 
+        ret = u""
+        for ch in unicode_s
