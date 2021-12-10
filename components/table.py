@@ -53,4 +53,7 @@ class SgTable:
         return len(self._table)
 
     def __iter__(self):
-  
+        for row in self._table:
+            yield row
+
+    def 
