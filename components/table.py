@@ -49,4 +49,5 @@ class SgTable:
         self._fields = []
         self._table = []
 
-    d
+    def __len__(self):
+        return
