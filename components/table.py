@@ -38,4 +38,9 @@ class EscapeHtml:
     def EscapeUnicodeStr(cls, unicode_str):
         ret = u""
         for ch in unicode_str:
-            ret += cls.Escape(c
+            ret += cls.Escape(ch)
+        return ret
+
+
+class SgTable:
+    """A 
