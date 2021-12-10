@@ -43,4 +43,7 @@ class EscapeHtml:
 
 
 class SgTable:
-    """A 
+    """A class to store tables."""
+
+    def __init__(self):
+      
