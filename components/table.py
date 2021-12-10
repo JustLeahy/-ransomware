@@ -50,4 +50,7 @@ class SgTable:
         self._table = []
 
     def __len__(self):
-        return
+        return len(self._table)
+
+    def __iter__(self):
+  
