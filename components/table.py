@@ -56,4 +56,5 @@ class SgTable:
         for row in self._table:
             yield row
 
-    def 
+    def __getitem__(self, key):
+        if isinst
