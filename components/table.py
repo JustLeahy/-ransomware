@@ -57,4 +57,5 @@ class SgTable:
             yield row
 
     def __getitem__(self, key):
-        if isinst
+        if isinstance(key, slice):
+            return self._ta
