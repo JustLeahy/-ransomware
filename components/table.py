@@ -60,4 +60,4 @@ class SgTable:
         if isinstance(key, slice):
             return self._table[key.start:key.stop:key.step]
         else:
-            if not ((type(key) == in
+            if not ((type(key) == int or type(key) == long) and key >= 0 and key < l
