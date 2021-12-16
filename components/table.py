@@ -58,4 +58,5 @@ class SgTable:
 
     def __getitem__(self, key):
         if isinstance(key, slice):
-            return self._ta
+            return self._table[key.start:key.stop:key.step]
+      
