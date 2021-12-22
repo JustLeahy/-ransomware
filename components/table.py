@@ -61,4 +61,6 @@ class SgTable:
             return self._table[key.start:key.stop:key.step]
         else:
             if not ((type(key) == int or type(key) == long) and key >= 0 and key < len(self._table)):
-                raise ValueError("I
+                raise ValueError("Index illegal")
+            else:
+                re
