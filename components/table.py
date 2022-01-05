@@ -65,4 +65,5 @@ class SgTable:
             else:
                 return self._table[key]
 
-    def __setitem__(self,
+    def __setitem__(self, key, value):
+        if not ((type(key) == 
