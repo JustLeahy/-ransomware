@@ -67,4 +67,6 @@ class SgTable:
 
     def __setitem__(self, key, value):
         if not ((type(key) == int or type(key) == long) and key >= 0 and key < len(self._table)):
-            raise Value
+            raise ValueError("Index illegal")
+        else:
+          
