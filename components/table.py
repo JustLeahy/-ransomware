@@ -69,4 +69,6 @@ class SgTable:
         if not ((type(key) == int or type(key) == long) and key >= 0 and key < len(self._table)):
             raise ValueError("Index illegal")
         else:
-          
+            self._table[key] = value
+
+    def __st
