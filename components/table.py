@@ -72,4 +72,6 @@ class SgTable:
             self._table[key] = value
 
     def __str__(self):
-        ret = str(sel
+        ret = str(self._fields)
+        for row in self._table:
+      
