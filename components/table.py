@@ -71,4 +71,5 @@ class SgTable:
         else:
             self._table[key] = value
 
-    def __st
+    def __str__(self):
+        ret = str(sel
