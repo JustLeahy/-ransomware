@@ -74,4 +74,5 @@ class SgTable:
     def __str__(self):
         ret = str(self._fields)
         for row in self._table:
-      
+            ret += "\n" + str(row)
+        
