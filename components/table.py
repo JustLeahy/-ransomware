@@ -78,4 +78,6 @@ class SgTable:
         return ret
 
     def __HasCommaOutOfString(self, val):
-        in_string = Fa
+        in_string = False
+        is_escaping = False
+        for ch
