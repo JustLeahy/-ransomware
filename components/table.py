@@ -75,4 +75,6 @@ class SgTable:
         ret = str(self._fields)
         for row in self._table:
             ret += "\n" + str(row)
-        
+        return ret
+
+    def __HasCommaOutOf
