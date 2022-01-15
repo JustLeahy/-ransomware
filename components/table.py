@@ -77,4 +77,5 @@ class SgTable:
             ret += "\n" + str(row)
         return ret
 
-    def __HasCommaOutOf
+    def __HasCommaOutOfString(self, val):
+        in_string = Fa
