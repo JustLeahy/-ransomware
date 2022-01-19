@@ -83,4 +83,5 @@ class SgTable:
         for ch in val:
             if in_string:
                 if is_escaping:
-                    is_e
+                    is_escaping = False
+                elif c
