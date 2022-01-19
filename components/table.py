@@ -82,4 +82,5 @@ class SgTable:
         is_escaping = False
         for ch in val:
             if in_string:
-  
+                if is_escaping:
+                    is_e
