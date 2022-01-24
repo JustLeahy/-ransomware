@@ -87,4 +87,5 @@ class SgTable:
                 elif ch == u"\\":
                     is_escaping = True
                 elif ch in (u"\"", u"\'"):
-    
+                    in_string = False
+       
