@@ -91,4 +91,5 @@ class SgTable:
             else:
                 if ch == u",":
                     return True
-          
+                elif ch in (u"\"", u"\'"):
+        
