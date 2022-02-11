@@ -92,4 +92,7 @@ class SgTable:
                 if ch == u",":
                     return True
                 elif ch in (u"\"", u"\'"):
-        
+                    in_string = True
+        return False
+
+    
