@@ -95,4 +95,5 @@ class SgTable:
                     in_string = True
         return False
 
-    
+    def _GetCsvRepr(self, val):
+        if isi
