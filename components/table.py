@@ -97,4 +97,5 @@ class SgTable:
 
     def _GetCsvRepr(self, val):
         if isinstance(val, list):
-            return u",".join(
+            return u",".join(itertools.imap(self._GetCsvRepr, val))
+   
