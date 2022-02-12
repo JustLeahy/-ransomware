@@ -96,4 +96,5 @@ class SgTable:
         return False
 
     def _GetCsvRepr(self, val):
-        if isi
+        if isinstance(val, list):
+            return u",".join(
