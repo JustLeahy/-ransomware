@@ -100,4 +100,4 @@ class SgTable:
             return u",".join(itertools.imap(self._GetCsvRepr, val))
         else:
             if isinstance(val, unicode):
-     
+                if self.__HasCommaOutOfString(v
