@@ -101,4 +101,5 @@ class SgTable:
         else:
             if isinstance(val, unicode):
                 if self.__HasCommaOutOfString(val) or u"\n" in val:
-                    re
+                    return u"\"" + val + u"\""
+               
