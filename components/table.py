@@ -105,4 +105,7 @@ class SgTable:
                 else:
                     return val
             else:
-                return unicode(str(va
+                return unicode(str(val), "utf-8")
+
+    def InCsv(self):
+        
