@@ -104,4 +104,5 @@ class SgTable:
                     return u"\"" + val + u"\""
                 else:
                     return val
-       
+            else:
+                return unicode(str(va
