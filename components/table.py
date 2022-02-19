@@ -108,4 +108,5 @@ class SgTable:
                 return unicode(str(val), "utf-8")
 
     def InCsv(self):
-        
+        ret = self._GetCsvRepr(self._fields)
+        for 
