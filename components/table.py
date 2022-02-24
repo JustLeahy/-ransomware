@@ -110,4 +110,5 @@ class SgTable:
     def InCsv(self):
         ret = self._GetCsvRepr(self._fields)
         for row in self._table:
-            ret +=
+            ret += u"\n" + self._GetCsvRepr(row)
+    
