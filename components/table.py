@@ -114,4 +114,4 @@ class SgTable:
         return ret
 
     def InHtml(self):
-        ret = u"<html>\n<head><meta charset=\"utf-8\">\n<t
+        ret = u"<html>\n<head><meta charset=\"utf-8\">\n<title>SQLGitHub Result</title>\n</head>\
