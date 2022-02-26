@@ -111,4 +111,7 @@ class SgTable:
         ret = self._GetCsvRepr(self._fields)
         for row in self._table:
             ret += u"\n" + self._GetCsvRepr(row)
-    
+        return ret
+
+    def InHtml(self):
+        ret
