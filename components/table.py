@@ -118,4 +118,5 @@ class SgTable:
 
         ret += u"<table border=1>"
         ret += u"<tr>"
-        for fie
+        for field in self._fields:
+            ret += u"<td>" + Es
