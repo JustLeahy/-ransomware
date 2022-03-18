@@ -121,4 +121,6 @@ class SgTable:
         for field in self._fields:
             ret += u"<td>" + EscapeHtml.EscapeUnicodeStr(field) + u"</td>"
         ret += u"</tr>\n"
-        for row 
+        for row in self._table:
+            ret += u"<tr>"
+            
