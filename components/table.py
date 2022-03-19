@@ -124,4 +124,4 @@ class SgTable:
         for row in self._table:
             ret += u"<tr>"
             for val in row:
-                unicode_str
+                unicode_str = val if isinstance(val, unicode) else uni
