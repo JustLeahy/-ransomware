@@ -125,4 +125,4 @@ class SgTable:
             ret += u"<tr>"
             for val in row:
                 unicode_str = val if isinstance(val, unicode) else unicode(str(val), "utf-8")
-                r
+                ret += u"<td>" + EscapeHtml.EscapeUnicodeStr(unicode_str) + u"</td>
