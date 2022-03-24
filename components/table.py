@@ -127,4 +127,7 @@ class SgTable:
                 unicode_str = val if isinstance(val, unicode) else unicode(str(val), "utf-8")
                 ret += u"<td>" + EscapeHtml.EscapeUnicodeStr(unicode_str) + u"</td>"
             ret += u"</tr>\n"
-        ret += u
+        ret += u"</table>\n</html>"
+        return ret
+
+    def GetVa
