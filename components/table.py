@@ -130,4 +130,5 @@ class SgTable:
         ret += u"</table>\n</html>"
         return ret
 
-    def GetVa
+    def GetVals(self, field):
+        idx = [i for i, f
