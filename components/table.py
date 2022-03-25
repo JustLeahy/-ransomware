@@ -131,4 +131,4 @@ class SgTable:
         return ret
 
     def GetVals(self, field):
-        idx = [i for i, f
+        idx = [i for i, f in enumerate(self._fields) if f == field][
