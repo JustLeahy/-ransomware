@@ -135,4 +135,5 @@ class SgTable:
         return [row[idx] for row in self._table]
 
     def Copy(self, table):
-    
+        self.SetFields(table.GetFields())
+        self.Se
