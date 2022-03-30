@@ -136,4 +136,6 @@ class SgTable:
 
     def Copy(self, table):
         self.SetFields(table.GetFields())
-        self.Se
+        self.SetTable(table.GetTable())
+    
+    def App
