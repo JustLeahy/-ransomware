@@ -143,3 +143,6 @@ class SgTable:
 
     def GetTable(self):
         return self._table
+
+    def SetTable(self, table):
+        self.
