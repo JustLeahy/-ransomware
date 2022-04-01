@@ -138,4 +138,5 @@ class SgTable:
         self.SetFields(table.GetFields())
         self.SetTable(table.GetTable())
     
-    def App
+    def Append(self, row):
+        self._table.append(row)
