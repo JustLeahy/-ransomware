@@ -140,3 +140,6 @@ class SgTable:
     
     def Append(self, row):
         self._table.append(row)
+
+    def GetTable(self):
+        return self._table
