@@ -150,4 +150,5 @@ class SgTable:
     def GetFields(self):
         return self._fields
 
-    def SetF
+    def SetFields(self, fields):
+        self._fields = 
