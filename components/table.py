@@ -148,4 +148,6 @@ class SgTable:
         self._table = table
 
     def GetFields(self):
-  
+        return self._fields
+
+    def SetF
