@@ -155,4 +155,5 @@ class SgTable:
     
     def SliceCol(self, start, end):
         table = SgTable()
-        table.SetFiel
+        table.SetFields(self._fields[start:end])
+        
