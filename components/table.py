@@ -160,4 +160,5 @@ class SgTable:
             table.Append(row[start:end])
         return table
 
-    
+    def Chain(self, table):
+        res_table = SgT
