@@ -157,4 +157,7 @@ class SgTable:
         table = SgTable()
         table.SetFields(self._fields[start:end])
         for row in self._table:
-            table.A
+            table.Append(row[start:end])
+        return table
+
+    
