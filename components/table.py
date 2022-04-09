@@ -161,4 +161,5 @@ class SgTable:
         return table
 
     def Chain(self, table):
-        res_table = SgT
+        res_table = SgTable()
+        res_table.SetFields(self._fields 
