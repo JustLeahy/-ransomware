@@ -163,4 +163,5 @@ class SgTable:
     def Chain(self, table):
         res_table = SgTable()
         res_table.SetFields(self._fields + table.GetFields())
-        rows = min(len(self._t
+        rows = min(len(self._table), len(table))
+        for i in range(rows)
