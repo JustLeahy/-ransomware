@@ -165,4 +165,5 @@ class SgTable:
         res_table.SetFields(self._fields + table.GetFields())
         rows = min(len(self._table), len(table))
         for i in range(rows):
-            res_table.Append(self._ta
+            res_table.Append(self._table[i] + table[i])
+        return res_table
