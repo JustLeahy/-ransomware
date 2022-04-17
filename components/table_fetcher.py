@@ -165,3 +165,28 @@ class SgTableFetcher:
                         state = info
             repos = org.get_repos()
             for repo in repos:
+                pulls = repo.get_pulls(state=state)
+                for pull in pulls:
+                    if not ret.GetFields():
+                        ret.SetFields(self._GetKeys(pull))
+                    ret.Append(self._GetVals(pull))
+        elif sub_name == u"commits":
+            days_start, days_end = None, None
+            if add_info:
+                for info in add_info:
+                    if self._IsDateRange(info):
+                        days_start, days_end = self._ParseDateRange(info)
+            repos = org.get_repos()
+            for repo in repos:
+                commits = self._ExecFuncByDateRange(repo.get_commits,
+                                                    days_start, days_end)
+                for commit in commits:
+                    git_commit = commit.commit
+                    try:
+                        setattr(git_commit, u"login", commit.author.login if commit.author else None)
+                    except AttributeError:  # TODO(lnishan): unknown author, need to track down PyGithub bug
+                        setattr(git_commit, u"login", None)
+                    if not ret.GetFields():
+                        ret.SetFields(self._GetKeys(git_commit))
+                    ret.Append(self._GetVals(git_commit))
+        return ret
