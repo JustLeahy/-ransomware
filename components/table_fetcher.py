@@ -77,3 +77,47 @@ class SgTableFetcher:
             return non_list.filename
         else:
             return non_list
+
+    def __ConvertVal(self, val):
+        if isinstance(val, list):
+            return [self.__ConvertNonList(non_list) for non_list in val]
+        else:
+            return self.__ConvertNonList(val)
+
+    def _GetVals(self, cls):
+        if not u"*" in self._rel_keys:
+            return [self.__ConvertVal(getattr(cls, key)) for key in self._rel_keys]
+        else:
+            return [self.__ConvertVal(val) for key, val in inspect.getmembers(cls, lambda m: not inspect.ismethod(m)) if not key.startswith("_")]
+
+    def _IsDateRange(self, info):
+        if not info:
+            return False
+        for ch in info:
+            if not (util.IsNumeric(ch) or ch == "-"):
+                return False
+        return True
+
+    def _ParseDateRange(self, info):
+        if "-" in info:
+            tmp = info.split("-")
+            days_start = int(tmp[0]) if tmp[0] else None
+            days_end = int(tmp[1]) if tmp[1] else None
+            if days_start and days_end and days_start < days_end:
+                days_start, days_end = days_end, days_start
+            return days_start, days_end
+        else:
+            return int(info), None
+
+    def _GetDatetimeDaysBefore(self, days):
+        return datetime.datetime.now() - datetime.timedelta(days=days)
+
+    def _ExecFuncByDateRange(self, func, days_start, days_end, **kwargs):
+        if days_start:
+            if days_end:
+                return func(since=self._GetDatetimeDaysBefore(days_start),
+                            until=self._GetDatetimeDaysBefore(days_end),
+                            **kwargs)
+            else:
+                return func(since=self._GetDatetimeDaysBefore(days_start),
+                            **kwargs)
