@@ -121,3 +121,47 @@ class SgTableFetcher:
             else:
                 return func(since=self._GetDatetimeDaysBefore(days_start),
                             **kwargs)
+        else:
+            if days_end:
+                return func(until=self._GetDatetimeDaysBefore(days_end),
+                            **kwargs)
+            else:
+                return func(**kwargs)
+    
+    def Fetch(self, label):
+        ret = tb.SgTable()
+        org_name, sub_name, add_info = self._Parse(label)
+        org = self._github.get_organization(org_name)
+        if sub_name == None:  # eg. "google"
+            ret.SetFields(self._GetKeys(org))
+            ret.Append(self._GetVals(org))
+        elif sub_name == u"repos":
+            repos = org.get_repos()
+            for repo in repos:
+                if not ret.GetFields():
+                    ret.SetFields(self._GetKeys(repo))
+                ret.Append(self._GetVals(repo))
+        elif sub_name == u"issues":
+            days = None
+            state = u"open"
+            if add_info:
+                for info in add_info:
+                    if util.IsNumeric(info):
+                        days = int(info)
+                    elif info in (u"all", u"open", u"closed"):
+                        state = info
+            repos = org.get_repos()
+            for repo in repos:
+                issues = repo.get_issues(state=state, since=self._GetDatetimeDaysBefore(days)) if days else repo.get_issues(state=state)
+                for issue in issues:
+                    if not ret.GetFields():
+                        ret.SetFields(self._GetKeys(issue))
+                    ret.Append(self._GetVals(issue))
+        elif sub_name == u"pulls":
+            state = u"open"
+            if add_info:
+                for info in add_info:
+                    if info in (u"all", u"open", u"closed"):
+                        state = info
+            repos = org.get_repos()
+            for repo in repos:
