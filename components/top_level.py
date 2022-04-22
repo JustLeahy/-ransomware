@@ -45,3 +45,25 @@ class SQLGitHub:
             try:
                 result = session.Execute()
             except AttributeError:
+                sys.stderr.write("One or more of the specified fields doesn't exist.\n")
+            else:
+                exec_time = time.time() - start_time
+                if display_result:
+                    util.PrintResult(result, self._output)
+                    print("-")
+                    print("Total rows: %d" % (len(result)))
+                    print("Total execution time: %.3fs"% (exec_time))
+                return result, exec_time
+
+    def Start(self):
+        while True:
+            sql = prompt(self._PROMPT_STR,
+                         history=FileHistory("history.txt"),
+                         auto_suggest=AutoSuggestFromHistory(),
+                         completer=self._completer,
+                         lexer=MySqlLexer,
+                         style=self._style,
+                         on_abort=AbortAction.RETRY)
+            if sql.lower() in definition.EXIT_TOKENS:
+                break
+            self.Execute(sql)
