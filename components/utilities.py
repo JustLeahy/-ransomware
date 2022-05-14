@@ -10,3 +10,6 @@ def PrintResult(table, output):
         print(table.InHtml())
 
 def IsNumeric(num_str):
+    try:
+        val = int(num_str)
+    except Value
