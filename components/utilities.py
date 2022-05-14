@@ -7,4 +7,6 @@ def PrintResult(table, output):
     elif output == "csv":
         print(table.InCsv())
     elif output == "html":
-      
+        print(table.InHtml())
+
+def IsNumeric(num_str):
