@@ -12,4 +12,7 @@ def PrintResult(table, output):
 def IsNumeric(num_str):
     try:
         val = int(num_str)
-    except Value
+    except ValueError:
+        return False
+    else:
+     
