@@ -15,4 +15,6 @@ def IsNumeric(num_str):
     except ValueError:
         return False
     else:
-     
+        return True
+
+def GuaranteeUnicode(obj)
