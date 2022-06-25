@@ -19,4 +19,6 @@ def IsNumeric(num_str):
 
 def GuaranteeUnicode(obj):
     if type(obj) == unicode:
-        retur
+        return obj
+    elif type(obj) == str:
+        return uni
