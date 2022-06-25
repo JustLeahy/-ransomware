@@ -21,4 +21,6 @@ def GuaranteeUnicode(obj):
     if type(obj) == unicode:
         return obj
     elif type(obj) == str:
-        return uni
+        return unicode(obj, "utf-8")
+    else:
+        return unicode(str(obj), "utf-
