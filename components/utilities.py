@@ -27,3 +27,6 @@ def GuaranteeUnicode(obj):
 
 def Unescape(ch):
     if ch == "0":
+        return chr(0)
+    elif ch == "\'":
+      
