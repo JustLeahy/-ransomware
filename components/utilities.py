@@ -23,4 +23,7 @@ def GuaranteeUnicode(obj):
     elif type(obj) == str:
         return unicode(obj, "utf-8")
     else:
-        return unicode(str(obj), "utf-
+        return unicode(str(obj), "utf-8")
+
+def Unescape(ch):
+    if ch == "0":
