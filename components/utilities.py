@@ -31,4 +31,7 @@ def Unescape(ch):
     elif ch == "\'":
         return "\'"
     elif ch == "\"":
-       
+        return "\""
+    elif ch == "b":
+        return "\b"
+    elif ch == 
