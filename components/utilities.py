@@ -34,4 +34,6 @@ def Unescape(ch):
         return "\""
     elif ch == "b":
         return "\b"
-    elif ch == 
+    elif ch == "n":
+        return "\n"
+    elif ch == "r":
