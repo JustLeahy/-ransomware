@@ -46,4 +46,5 @@ def Unescape(ch):
         return "\\"
     elif ch == "%":  # keep escape: like <literal string>
         return "\\%"
-    
+    elif ch == "_":
+        return "\\_"
