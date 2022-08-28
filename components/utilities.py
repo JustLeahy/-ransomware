@@ -43,4 +43,5 @@ def Unescape(ch):
     elif ch == "Z":
         return chr(26)
     elif ch == "\\":
-        
+        return "\\"
+    elif ch == "%":  # keep escape: lik
