@@ -41,4 +41,6 @@ def Unescape(ch):
     elif ch == "t":
         return "\t"
     elif ch == "Z":
+        return chr(26)
+    elif ch == "\\":
         
