@@ -6,4 +6,6 @@ import importlib
 def Load(module):
     try:
         mod = importlib.import_module(module)
-    e
+    except ImportError:
+        token = None
+       
