@@ -1,3 +1,8 @@
 """Config loader for SQLGitHub."""
 
-import imp
+import importlib
+
+
+def Load(module):
+    try:
+        mod = im
