@@ -8,4 +8,6 @@ def Load(module):
         mod = importlib.import_module(module)
     except ImportError:
         token = None
-       
+        output = "str"
+    else:
+        token = mod
