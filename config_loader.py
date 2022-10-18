@@ -10,4 +10,4 @@ def Load(module):
         token = None
         output = "str"
     else:
-        token = mod
+        token = mod.token if hasattr(mod, "token") else None
