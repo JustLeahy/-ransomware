@@ -11,3 +11,4 @@ def Load(module):
         output = "str"
     else:
         token = mod.token if hasattr(mod, "token") else None
+        output = mod.output if hasattr(mod, 
