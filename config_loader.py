@@ -13,4 +13,4 @@ def Load(module):
         token = mod.token if hasattr(mod, "token") else None
         output = mod.output if hasattr(mod, "output") else "str"
     
-    token = tok
+    token = token or raw_input("Please enter your GitHub token (which can be 
