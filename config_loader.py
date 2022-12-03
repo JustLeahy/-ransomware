@@ -16,4 +16,4 @@ def Load(module):
     token = token or raw_input("Please enter your GitHub token (which can be obtained from https://github.com/settings/tokens): ")
 
     return (token,
-            outpu
+            output)
