@@ -12,4 +12,5 @@ args = arg_parser.parse_args()
 
 
 if __name__ == "__main__":
-    token, out
+    token, output = config_loader.Load("config")
+   
