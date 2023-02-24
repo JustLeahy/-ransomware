@@ -14,4 +14,5 @@ args = arg_parser.parse_args()
 if __name__ == "__main__":
     token, output = config_loader.Load("config")
     sqlserv = top_level.SQLGitHub(token, output)
-    result, exec_time = sqlserv.Execute(args.sql, disp
+    result, exec_time = sqlserv.Execute(args.sql, display_result=False)
+    util.PrintResult(result, output)
